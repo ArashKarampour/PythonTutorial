@@ -134,34 +134,34 @@
 
 # 9- Making custom Containers(datastructures):(video important)
 #see also: https://www.analyticsvidhya.com/blog/2021/08/explore-the-magic-methods-in-python/
-class TagCloud:
-    def __init__(self):
-        self.tags = {}
-    # here we delete the case sensitivity problem of typical dictionaries with our custom change
-    def add(self, tag):
-        self.tags[tag.lower()] = self.tags.get(tag.lower(), 0) + 1
-    # __getitem__ magic method for accessing objects like objectInstance[index] in array or objectInstance[key] in dictionaries this kind of calling on objects will invoke this magic method
-    def __getitem__(self, tag): 
-        return self.tags.get(tag.lower(), 0)
-    # with __setitem__ magic method we can set values like this on objects: objectInstance[index] = value or objectInstance[key] = value
-    def __setitem__(self,tag,count):
-        self.tags[tag.lower()] = count
-    # this __len__ magic method will be invoked when we call len(objectInstance)
-    def __len__(self):
-        return len(self.tags)
-    # __iter__ magic method works when we want to iterate over an object: note we should return with iter() function
-    def __iter__(self):
-        return iter(self.tags)
-cloud = TagCloud()
-cloud.add("python")
-cloud.add("Python")
-cloud.add("python")
-print(cloud.tags)
-print(cloud["python"]) # __getitem__ magic method will be invoked because of this line
-cloud["python"] = 10 # __setitem__ magic method will be invoked because of this line
-print(cloud["python"]) 
+# class TagCloud:
+#     def __init__(self):
+#         self.tags = {}
+#     # here we delete the case sensitivity problem of typical dictionaries with our custom change
+#     def add(self, tag):
+#         self.tags[tag.lower()] = self.tags.get(tag.lower(), 0) + 1
+#     # __getitem__ magic method for accessing objects like objectInstance[index] in array or objectInstance[key] in dictionaries this kind of calling on objects will invoke this magic method
+#     def __getitem__(self, tag): 
+#         return self.tags.get(tag.lower(), 0)
+#     # with __setitem__ magic method we can set values like this on objects: objectInstance[index] = value or objectInstance[key] = value
+#     def __setitem__(self,tag,count):
+#         self.tags[tag.lower()] = count
+#     # this __len__ magic method will be invoked when we call len(objectInstance)
+#     def __len__(self):
+#         return len(self.tags)
+#     # __iter__ magic method works when we want to iterate over an object: note we should return with iter() function
+#     def __iter__(self):
+#         return iter(self.tags)
+# cloud = TagCloud()
+# cloud.add("python")
+# cloud.add("Python")
+# cloud.add("python")
+# print(cloud.tags)
+# print(cloud["python"]) # __getitem__ magic method will be invoked because of this line
+# cloud["python"] = 10 # __setitem__ magic method will be invoked because of this line
+# print(cloud["python"]) 
 
-print(len(cloud)) # this line will invoke the __len__ magic method
+# print(len(cloud)) # this line will invoke the __len__ magic method
 
-for tag in cloud: # the __iter__ magic method will be called here when we want to iterate over cloud object
-    print(tag)
+# for tag in cloud: # the __iter__ magic method will be called here when we want to iterate over cloud object
+#     print(tag)
