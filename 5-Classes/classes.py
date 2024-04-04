@@ -165,3 +165,21 @@
 
 # for tag in cloud: # the __iter__ magic method will be called here when we want to iterate over cloud object
 #     print(tag)
+
+# 10- private members:
+# use self.__varName instead of self.varName for defining an attribute as a private one 
+# we can also make a method private with adding just double underscore to the beginning of it
+# class testClass:
+#     def __init__(self):
+#         self.__testVar = 20
+#         self.testvar2 = 22
+#     # this changevar is now a private method with this __ in the front of it.
+#     def __changevar(self, value):
+#         self.__testVar = value
+    
+
+# test = testClass()
+# #print(test.__testVar) # here we get an AttributeError because this variable is kind of private(but actually can be still accessed!)
+# print(test.__dict__) # every object or calss in python has the method __dict__, which holds all the attributes in the class
+# print(test._testClass__testVar) # it just added the classname with _ to the name of the private variable
+# # in fact with this kind of naming we are considering the convention for making the variables private and to warn that they must not be changed.
