@@ -183,3 +183,206 @@
 # print(test.__dict__) # every object or calss in python has the method __dict__, which holds all the attributes in the class
 # print(test._testClass__testVar) # it just added the classname with _ to the name of the private variable
 # # in fact with this kind of naming we are considering the convention for making the variables private and to warn that they must not be changed.
+
+# 11- Properties : they're used to take control over the attribute set and get (for more details watch the vid)
+# class Product:
+#     def __init__(self, price):
+#         self.price = price
+
+#     @property
+#     def price(self):
+#         return self.__price
+
+#     @price.setter
+#     def price(self, value):
+#         if value < 0: # here is where we can control the value that is going to be set for price.
+#             raise ValueError("Price cannot be negative!")
+#         self.__price = value
+    
+# product = Product(10)
+# product.price = 2
+# print(product.price)
+
+# # with @property decorator we made the price function as a property or attribute field(getter method)
+# # with @price.setter we have defined the setter method for price attribute 
+# # when we say self.price or product.price the getter method or the method with @property will be called
+# # when we say self.price = value or product.price = value the setter method will be called
+# # Note: we can not name the property field and the value we set for that the same because we'll get RecursionError (therefore here we set self.__price in the setter and not self.price)
+
+# 12,13- Inheritance: it prevents code duplication and allows us to reuse code
+
+# class Animal:
+#     def __init__(self):
+#         self.age = 1
+
+#     def eat(self):
+#         print("can eat")
+    
+# class Bird(Animal):
+#     def fly(self):
+#         print("can fly")
+    
+# class Fish(Animal):
+#     def swim(self):
+#         print("can swim")
+
+
+# b = Bird()
+# b.eat()
+# b.fly()
+# print(b.age)
+
+# # the subclass can inherite the both the methods and the attributes of the super class
+
+# print(isinstance(b,Animal))
+# print(isinstance(b,object)) # every class inherites from the object class
+
+# 14- Method Overriding: replacing or extending a method defined in the base class 
+# class Animal:
+#     def __init__(self):
+#         self.age = 1
+
+#     def eat(self):
+#         print("can eat")
+    
+# class Bird(Animal):
+#     def __init__(self): # this __init__ method overrides the __init__ method in the base class
+#         super().__init__() # with this super method we'll have access to any methods and attribute of the supercalls(without this line we couldn't have access to the age attribute defined in the super class)
+#         self.weight = 2
+
+#     def fly(self):        
+#         print("can fly")
+
+
+# b = Bird()
+# print(b.weight)
+# print(b.age)
+
+# 15- Multi-level Inheritance:
+
+# class Animal:
+#     def eat(self):
+#         print("can eat")
+    
+# class Bird(Animal):        
+#     def fly(self):        
+#         print("can fly")
+
+# class Chicken(Bird): # but a chicken cannot fly(so try not to use such kind of inheritance)
+#     pass
+
+# # try to avoid multi level inheritance mostely. but if you want to use Inheritance just limit it to one or two levels
+
+# 16- Multiple Inheritance:
+
+# class Employee:
+#     def greet(self):
+#         print("Employee Greet")
+    
+# class Person:
+#     def greet(self):
+#         print("Person Greet")
+
+# class Manager(Person,Employee): # the order of inheritance here is important for calling the greet method(the same method name)
+#     pass
+
+# manager = Manager()
+# manager.greet() # this method will be called based on the fact, that which class we inherite from first()
+# # if the original class has the method it will call it but if not it will call the method in the super class in the order of Inheritance we defiend(if we have a multiple inheritance)
+
+# # this here could be a good example of multiple inheritance:
+# class Flyer:
+#     def fly(self):
+#         pass
+
+# class Swimmer:
+#     def swim(self):
+#         pass
+
+# class FlyingFish(Flyer, Swimmer):
+#     pass
+
+# 17- a good example of Inheritance:
+
+# # Custome exception:
+# class InvalidOperationError(Exception):
+#     pass
+
+
+# class Stream:
+#     def __init__(self):
+#         self.openned = False
+
+#     def open(self):
+#         if self.openned:
+#             raise InvalidOperationError("Stream is already open!")
+#         self.openned = True
+    
+#     def close(self):
+#         if not self.openned:
+#             raise InvalidOperationError("Stream is already close!")
+#         self.openned = False
+
+
+# class FileStream(Stream):
+#     def read(self):
+#         print("reading data from a file")
+    
+
+# class NetworkStream(Stream):
+#     def read(self):
+#         print("Reading data from a network")
+
+# n = NetworkStream()
+# n.close()
+
+# 18- Abstract Base Classes: the Stream class from example video 17 has two issues:
+
+# 1- we shouldn't be able to direcltly creat an instance of Stream class(it should be a abstract class)
+# 2- the read method should become an abstract method that other sub classes must implement it
+
+# this line is important for making a abstract class and method:
+# from abc import ABC, abstractmethod
+# # from abc module we import ABC class (Abstract Base Class) and abstractmethod as a decorator method
+
+# # Custome exception:
+# class InvalidOperationError(Exception):
+#     pass
+
+
+# class Stream(ABC):
+#     def __init__(self):
+#         self.openned = False
+
+#     def open(self):
+#         if self.openned:
+#             raise InvalidOperationError("Stream is already open!")
+#         self.openned = True
+    
+#     def close(self):
+#         if not self.openned:
+#             raise InvalidOperationError("Stream is already close!")
+#         self.openned = False
+
+# # defining the read as an abstract method:
+#     @abstractmethod
+#     def read(self):
+#         pass
+
+# class FileStream(Stream):
+#     def read(self):
+#         print("reading data from a file")
+    
+
+# class NetworkStream(Stream):
+#     def read(self):
+#         print("Reading data from a network")
+
+# class MemoryStream(Stream):
+#     def read(self):
+#         print("Reading data from a memory stream")
+
+# # s = Stream() # we cannot instantiate the abstract class Stream here 
+
+# m = MemoryStream()
+# m.read()
