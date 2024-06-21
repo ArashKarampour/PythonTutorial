@@ -417,3 +417,20 @@
 # l = TrackableList()
 # l.append('12')
 # print(l)
+
+# # 22- Data classes (namedtuple classes): # it's used when we work with data and no methods and they have attributes when we want to create an instance of them and we can not modify them after they are created. they also have magic methods by default
+# # see also: https://www.geeksforgeeks.org/namedtuple-in-python/
+
+# from collections import namedtuple
+
+# Point = namedtuple('Point',['x','y'])
+
+# p1 = Point(x=2,y=3)
+# p2 = Point(2,3)
+# p3 = Point(2,4)
+
+# print(p1.x)
+# print(p1[1])
+
+# print(p1 == p2)
+# print(p1 < p3)
