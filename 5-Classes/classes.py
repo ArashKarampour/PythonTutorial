@@ -386,3 +386,34 @@
 
 # m = MemoryStream()
 # m.read()
+
+# 19- Polymorphism: when we have different classes that inherite from the same class and they
+# implement one or many (abstract)methods of the base class and based on these implementation
+# and that we use which object of which class we will get different results at runtime because
+# of this different implementation of the abstract methods of the base class
+
+# 20- Duck Typing: if it walks like a duck and quaks like a duck it is a duck!
+# it means the python just looks for the existence of a method and not the type of the objects
+# that call that method, since python is a dynamicly typed language
+# it means to achieve polymorphism behaviour we don't have to have a base calss and inheritance
+# but with that all having a base class is still a good practice
+
+
+# # 21- extending the built-in clasees:
+# class Text(str):
+#     def duplicate(self):
+#         return self + self
+
+
+# mystr = Text("this is my str")
+# m = mystr.duplicate()
+# print(m)
+
+# class TrackableList(list):
+#     def append(self,obj): # actually here we are overriding the append method of the list class(type)
+#         print('append called')
+#         super().append(obj)
+
+# l = TrackableList()
+# l.append('12')
+# print(l)
