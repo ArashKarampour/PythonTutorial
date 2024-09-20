@@ -1,0 +1,28 @@
+pypi (python package index):
+like npm but this is for python packges (search for packages in pypi or google)
+
+
+list pip packages:
+
+pip list
+maybe on mac or linux use pip3
+
+install pip package:
+
+pip install PACKAGE_NAME
+
+install pip package with specific version:
+pip install PACKAGE_NAME==x.x.x
+example:
+pip install requests==2.9.0
+or
+install the latest compatible version with 2.9.x
+
+pip install requests==2.9.*
+or also this will do the same job:
+pip install requests~=2.9.0
+
+Uninstall a packge:
+
+pip uninstall PACKAGE_NAME
+

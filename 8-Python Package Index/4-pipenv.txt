@@ -1,0 +1,24 @@
+we can use pipenv instead of venv:
+
+first we need to install pipenv:
+pip install pipenv
+
+
+then instead of installing packges with pip in venvs we can use pipenv to install in our directory for the project we want to create:
+(this will add Pipfile and Pipfile.lock and also create a venv for us in a seperate folder)
+
+pipenv install NAME_OF_PACKAGE
+
+to show the venv directory:
+
+pipenv --venv
+
+
+activate the venv using pipenv:
+
+pipenv shell
+
+deactivate the venv for pipenv:
+just write:
+
+exit

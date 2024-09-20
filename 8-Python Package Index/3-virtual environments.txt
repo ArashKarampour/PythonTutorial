@@ -1,0 +1,25 @@
+if we want to have an isolated environment for each project
+with different versions of packgaes and so on we could use
+virtual environmets in python as we could use conda environments with conda (almost the same concept but different tooling)
+
+execute this:
+
+python -m venv NAME_OF_VIRTUAL_ENVIRONMENT_DIRECTORY
+
+(or with python3)
+
+activate the venv:
+
+source NAME_OF_VIRTUAL_ENVIRONMENT_DIRECTORY/bin/activate
+
+then you can install anything in this environment
+
+deactivate the venv:
+
+deactivate
+
+
+see also the general use cases of python -m:
+https://chatgpt.com/share/66eda27c-0428-8002-aede-4636be24abc2
+
+but all in all it's used to run python modules in command line
